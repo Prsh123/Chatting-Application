@@ -35,7 +35,6 @@
             border-radius: 5px;
             padding: 10px;
             margin: 10px 0;
-            height: 100px;
         }
         .container-3 {
             border: 2px solid #f5f5f5;
@@ -49,16 +48,12 @@
             clear: both;
             display: table;
         }
-        .time-right {
-            float: right;
-            color: #aaa
-        }
         .ex1 {
-            height: 470px;
+            height: 420px;
             overflow-y: scroll;
         }
         .ex2 {
-            height: 470px;
+            height: 420px;
             overflow-y: scroll;
         }
         .custom-table {
@@ -92,6 +87,34 @@
         .bg-i {
             background-color: #8de6f5!important;
         }
+        .img{
+            height:500px;
+            width: auto;
+        }
+        form {
+            max-width: 400px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
     </style>
     <script>
         setInterval(loadmessage, 1000);
@@ -105,6 +128,15 @@
                 console.log("AJAX Error: " + error);
             });
         }
+
+        function deleteMessage(messageId) {
+            $.post("DeleteMessageServlet2", { messageId: messageId }, function (data, status) {
+                $("#message_" + messageId).remove();
+            }).fail(function (xhr, status, error) {
+                console.log("AJAX Error: " + error);
+            });
+        }
+
         $(document).ready(function () {
             var inputbox = document.getElementById("message");
             inputbox.addEventListener('keyup', function (event) {
@@ -151,8 +183,17 @@
                 <div class="ex1">
 
                 </div>
-                <input type="text" class="form-control" id="message" name="message" placeholder="Type message here">
-                <input type="submit" value="send" id="send" class="form-control w-25 bg-i">
+                <div class="form-group d-flex">
+                    <input type="text" class="form-control flex-grow-1" id="message" name="message" placeholder="Type message here">
+                    <input type="submit" value="send" id="send" class="form-control w-25 bg-i ml-2">
+                </div>
+
+                <form action="UploadServlet2" method="post" enctype="multipart/form-data">
+                    <input type="hidden" id="sender" name="sender" value="<%=sender%>">
+                    <input type="hidden" id="receiver" name="receiver" value="<%=receiver%>">
+                    <input type="file" name="fileInput" id="fileInput" accept="image/jpeg">
+                    <input type="submit" value="Upload">
+                </form>
             </div>
         </div>
     </div>
