@@ -124,6 +124,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="ex1">
+
                 </div>
                 <div class="form-group d-flex">
                     <input type="text" class="form-control flex-grow-1" id="message" name="message" placeholder="Type message here">

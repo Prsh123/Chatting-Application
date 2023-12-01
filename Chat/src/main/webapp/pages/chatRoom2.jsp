@@ -53,7 +53,7 @@
             overflow-y: scroll;
         }
         .ex2 {
-            height: 420px;
+            height: 550px;
             overflow-y: scroll;
         }
         .custom-table {
@@ -189,8 +189,8 @@
                 </div>
 
                 <form action="UploadServlet2" method="post" enctype="multipart/form-data">
-                    <input type="hidden" id="sender" name="sender" value="<%=sender%>">
-                    <input type="hidden" id="receiver" name="receiver" value="<%=receiver%>">
+                    <input type="hidden" id="senders" name="senders" value="<%=sender%>">
+                    <input type="hidden" id="receivers" name="receivers" value="<%=receiver%>">
                     <input type="file" name="fileInput" id="fileInput" accept="image/jpeg">
                     <input type="submit" value="Upload">
                 </form>

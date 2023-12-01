@@ -35,8 +35,8 @@ public class UploadServlet2 extends HttpServlet {
             conn = DriverManager.getConnection(connectionURL, user, pass);
 
             Part part = request.getPart("fileInput");
-            String sender = request.getParameter("sender");
-            String receiver = request.getParameter("receiver");
+            String sender = request.getParameter("senders");
+            String receiver = request.getParameter("receivers");
             if (part != null) {
                 System.out.println(part);
             } else {

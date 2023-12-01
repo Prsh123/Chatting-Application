@@ -72,8 +72,8 @@ public class ChatServlet extends HttpServlet {
                     throw new RuntimeException(e);
                 }
             } else {
-                printWriter.println("Invalid username & password");
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+                printWriter.println("<script>alert('Invalid username or password');</script>");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("pages/login.jsp");
                 requestDispatcher.include(request, response);
             }
         }
@@ -146,7 +146,7 @@ public class ChatServlet extends HttpServlet {
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("pages/chatRoom.jsp");
                 requestDispatcher.forward(request, response);
             } else {
-                printWriter.println("Invalid username & password");
+                printWriter.println("<script>alert('Invalid roomname or password');</script>");
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("pages/roomLogin.jsp");
                 requestDispatcher.include(request, response);
             }
